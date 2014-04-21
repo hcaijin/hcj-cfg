@@ -1,0 +1,3 @@
+#!/bin/bash
+# 配置不允许进入本机的ip地址
+# iptables -A INPUT -i $EXTIF -s 192.168.0.5 -j DROP

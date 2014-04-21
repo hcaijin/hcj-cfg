@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<toolbar>
+	<item file="mail_receive_all" text="收信" action="A_RECEIVE_ALL"/>
+	<separator/>
+	<item file="mail_send_queue" text="发送" action="A_SEND_QUEUED"/>
+	<item file="mail_compose" text="撰写" action="A_COMPOSE_EMAIL"/>
+	<separator/>
+	<item file="mail_reply" text="回复" action="A_REPLY_MESSAGE"/>
+	<item file="mail_reply_to_all" text="全部" action="A_REPLY_ALL"/>
+	<item file="mail_reply_to_author" text="发送人" action="A_REPLY_SENDER"/>
+	<item file="mail_forward" text="转发" action="A_FORWARD"/>
+	<separator/>
+	<item file="trash_btn" text="删除" action="A_TRASH"/>
+	<item file="spam_btn" text="垃圾邮件" action="A_LEARN_SPAM"/>
+	<separator/>
+	<item file="down_arrow" text="下一个" action="A_GOTO_NEXT"/>
+</toolbar>

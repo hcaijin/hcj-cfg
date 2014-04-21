@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///home/hcaijin/Downloads/300-Arch.png" added="2014-04-13T09:40:55Z" modified="2014-04-13T09:40:55Z" visited="2014-04-13T09:40:55Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2014-04-13T09:40:55Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/hcaijin/Downloads/4f1944bdgw1ef84qxx2xkj20m81b3dl2.jpg" added="2014-04-13T10:01:40Z" modified="2014-04-13T10:01:40Z" visited="2014-04-13T10:01:41Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2014-04-13T10:01:40Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/hcaijin/Downloads/li_scaled_profile_picture.jpg" added="2014-04-13T10:02:10Z" modified="2014-04-13T10:02:10Z" visited="2014-04-13T10:02:10Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/jpeg"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2014-04-13T10:02:10Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/hcaijin/.Xauthority" added="2014-04-17T21:23:17Z" modified="2014-04-17T21:23:17Z" visited="2014-04-17T21:23:18Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="geany" exec="&apos;geany %u&apos;" modified="2014-04-17T21:23:17Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/hcaijin/.Xresources" added="2014-04-17T21:24:00Z" modified="2014-04-17T21:24:00Z" visited="2014-04-17T21:24:00Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:groups>
+          <bookmark:group>geany</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="geany" exec="&apos;geany %u&apos;" modified="2014-04-17T21:24:00Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

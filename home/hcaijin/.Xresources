@@ -1,0 +1,17 @@
+! ######### help https://wiki.archlinux.org/index.php/rxvt-unicode
+! ######### TERM=dump command man -Pcat urxvt | sed -n '/depth: b/,/^BA/p'|sed '$d'|sed '/^       [a-z]/s/^ */^/g'|sed -e :a -e 'N;s/\n/@@/g;ta;P;D'|sed 's,\^\([^@]\+\)@*[\t ]*\([^\^]\+\),! \2\n! URxvt*\1\n\n,g'|sed 's,@@\(  \+\),\n\1,g'|sed 's,@*$,,g'|sed '/^[^!]/d'|tr -d "'\`" >> ~/.Xresources
+! ######### urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp' >> ~/.Xresources
+! urxvt color set
+URxvt.background:black
+URxvt.foreground:white
+! scroll set
+URxvt.scrollBar:false
+! URxvt.scrollBar_right:True
+! URxvt.scrollBar_floating:True
+! URxvt.scrollstyle:plain
+! URxvt.scrollWithBuffer:false
+! URxvt.saveLines:5000
+
+! font set
+ URxvt.font:9x15
+ URxvt.letterSpace:-1

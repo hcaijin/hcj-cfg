@@ -1,0 +1,88 @@
+out_to_x no
+out_to_console yes
+short_units yes
+update_interval 5
+#xftfont Inconsolta:size=10 style=bold
+
+
+TEXT
+[\
+{ "full_text" : ${if_mpd_playing} "♪", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 },\
+{ "full_text" : "${mpd_artist 20} - ${mpd_title 30}"${else}""${endif}, "color" : "\#268BD2", "min_width" : 300, "separator" : false, "separator_block_width" : 3 },\
+# File system
+
+
+{"full_text":"  downloads","color":"\#268BD2","separator":false,"separator_block_width":6},\
+{"full_text":"${fs_free /downloads}","color":"\#808080","separator":false,"separator_block_width":6},\
+{"full_text":"","color":"\#268BD2","separator":true,"separator_block_width":10},\
+
+{"full_text":"  data","color":"\#268BD2","separator":false,"separator_block_width":6},\
+{"full_text":"${fs_free /data}","color":"\#808080","separator":false,"separator_block_width":6},\
+{"full_text":"","color":"\#268BD2","separator":true,"separator_block_width":10},\
+
+{"full_text":"  root","color":"\#268BD2","separator":false,"separator_block_width":6},\
+{"full_text":"${fs_free /}","color":"\#808080","separator":false,"separator_block_width":6},\
+{"full_text":"","color":"\#268BD2","separator":true,"separator_block_width":10},\
+
+# Network
+{"full_text":"  ","color":"\#859900","separator":true,"separator_block_width":6},\
+{"full_text":"${if_up enp0s3}","color":"\#00FF00","separator":true,"separator_block_width":6},\
+# CPU temperature:
+{"full_text":" TEMP ","color":"\#DC322F","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${hwmon temp 1}<45}${hwmon temp 1}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon temp 1}<50}${hwmon temp 1}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon temp 1}<55}${hwmon temp 1}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${hwmon temp 1}>=55}${hwmon temp 1}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"°C","color":"\#EEEEEE","separator":true,"separator_block_width":6},\
+
+# Memory:
+{"full_text":" MEM","color":"\#DC322F","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${memperc}<30}${memeasyfree}","color":"\#AAF096","separator":true,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}<60}${memeasyfree}","color":"\#F0DC64","separator":true,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}<85}
+${memeasyfree}","color":"\#FF9933","separator":true,"separator_block_width":6},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${memperc}>=85}${memeasyfree}","color":"\#FF3333","separator":true,"separator_block_width":6},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+# CPU:
+{"full_text":" CPU","color":"\#2AA198","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${cpu cpu0}<25}${cpu cpu0}","color":"\#AAF096","separator":true,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${cpu cpu0}<50}${cpu cpu0}","color":"\#F0DC64","separator":true,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${cpu cpu0}<75}${cpu cpu0}","color":"\#FF9933","separator":true,"separator_block_width":0},\
+{"full_text":"${else}"},\
+{"full_text":"${if_match ${cpu cpu0}<=100}${cpu cpu0}","color":"\#FF3333","separator":true,"separator_block_width":0},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"%","color":"\#EEEEEE","separator":true,"separator_block_width":6},\
+## Weather:
+#{"full_text":"☂","color":"\#888888","separator":false,"separator_block_width":6},\
+#{"full_text":"${execi 300 ~/bin/weather_simple "EUR|UK|UK241|#LONDON"}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+## Mail:
+#{"full_text":"✉","color":"\#888888","separator":false,"separator_block_width":6},\
+#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<=0}${execpi 60 python ~/bin/#gmail.py}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<2}${execpi 60 python ~/bin/#gmail.py}","color":"\#F0DC64","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}>2}${execpi 60 python ~/bin/#gmail.py}","color":"\#FF9933","separator":false,"separator_block_width":6},\
+#{"full_text":"${endif}${endif}${endif}"},\
+## Battery:
+#{"full_text":"ⓑ","color":"\#888888","separator":false,"separator_block_width":6},\
+#{"full_text":"${battery_percent}%","color":"\#EEEEEE","separator":false},\
+#Volume:
+{"full_text":" ","color":"\#AF005F               ","separator":false,"separator_block_width":6},\
+{"full_text":"${execi 1 amixer sget Master,0 | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#808080","separator":true},\
+#Date
+{"full_text":" ","color":"\#B58900","separator":false,"separator_block_width":6},\
+{"full_text":"${time %a %b %d %Y}","color":"\#808080","separator":false},\
+#Time
+{"full_text":" ","color":"\#FF3800","separator":false,"separator_block_width":6},\
+{"full_text":"${time %H:%M}","color":"\#808080","separator":false}\
+],

@@ -1,0 +1,219 @@
+
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# font for window titles. ISO 10646 = Unicode
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font xft:DejaVu Sans Mono 9
+font xft:Inconsolta Sans Mono 9
+# use Mouse+Mod4 to drag floating windows to their wanted position
+floating_modifier Mod4
+
+# colors
+client.focused #666a78 #666a78 #ffffff
+
+# autostart applications
+exec --no-startup-id numlockx
+exec --no-startup-id setxkbmap
+exec --no-startup-id udiskie
+exec --no-startup-id feh --bg-scale /downloads/dagnachew/wallpapers/white-dandelions-1920x1200.jpg
+# start a terminal
+bindsym Mod4+Return exec --no-startup-id termite
+
+# kill focused window
+bindsym Mod4+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym Mod4+d exec --no-startup-id dmenu_run
+bindsym MOd4+d exec --no-startup-id i3-dmenu-desktop
+# change focus 
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l focus right
+
+# boarder style for new window
+new_window pixel 2
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# move focused window
+bindsym Mod4+Shift+h move left
+bindsym Mod4+Shift+j move down
+bindsym Mod4+Shift+k move up
+bindsym Mod4+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod4+v split h
+
+# split in vertical orientation
+bindsym Mod4+b split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod4+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout default
+
+# toggle tiling / floating
+bindsym Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod4+a focus parent
+
+# focus the child container
+#bindsym Mod4+d focus child
+
+# switch to workspace
+bindsym Mod4+1 workspace 1: web
+bindsym Mod4+2 workspace 2: chat
+bindsym Mod4+3 workspace 3: media
+bindsym Mod4+4 workspace 4: dev
+bindsym Mod4+5 workspace 5
+bindsym Mod4+6 workspace 6
+bindsym Mod4+7 workspace 7
+bindsym Mod4+8 workspace 8
+bindsym Mod4+9 workspace 9
+bindsym Mod4+0 workspace 10
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move workspace 1: web
+bindsym Mod4+Shift+2 move workspace 2: chat
+bindsym Mod4+Shift+3 move workspace 3: media
+bindsym Mod4+Shift+4 move workspace 4: dev
+bindsym Mod4+Shift+5 move workspace 5
+bindsym Mod4+Shift+6 move workspace 6
+bindsym Mod4+Shift+7 move workspace 7
+bindsym Mod4+Shift+8 move workspace 8
+bindsym Mod4+Shift+9 move workspace 9
+bindsym Mod4+Shift+0 move workspace 10
+
+# automaticaly putting clients on specific workspaces
+#assign [class="^Chromium"] 1: web
+#assign [class="^Xchat"] 2: chat
+#assign [class="^Transmission-gtk"] 3: misc
+#assign [class="^Deadbeef"] 3: misc
+#assign [class="^Thunar"] 3: misc
+#assign [class="^LilyTerm"] 4: dev
+
+# reload the configuration file
+bindsym Mod4+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod4+Shift+r restart
+# exit i3 (logs you out of your X session)
+#bindsym Mod4+Shift+e exit
+bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'Do you real want to exit i3 ? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'" 
+ # resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # They resize the border in the direction you pressed, e.g.
+        # when pressing left, the window is resized so that it has
+        # more space on its left
+
+        bindsym j               resize shrink left 10 px or 10 ppt
+        bindsym Shift+j         resize grow   left 10 px or 10 ppt
+
+        bindsym k               resize shrink down 10 px or 10 ppt
+        bindsym Shift+k         resize grow   down 10 px or 10 ppt
+
+        bindsym l               resize shrink up 10 px or 10 ppt
+        bindsym Shift+l         resize grow   up 10 px or 10 ppt
+
+        bindsym semicolon       resize shrink right 10 px or 10 ppt
+        bindsym Shift+semicolon resize grow   right 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink left 10 px or 10 ppt
+        bindsym Shift+Left  resize grow   left 10 px or 10 ppt
+
+        bindsym Down        resize shrink down 10 px or 10 ppt
+        bindsym Shift+Down  resize grow   down 10 px or 10 ppt
+
+        bindsym Up          resize shrink up 10 px or 10 ppt
+        bindsym Shift+Up    resize grow   up 10 px or 10 ppt
+
+        bindsym Right       resize shrink right 10 px or 10 ppt
+        bindsym Shift+Right resize grow   right 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym Mod4+r mode "resize"
+
+# Shutdown Reboot Lock Screen
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+#
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    #    mode hide
+    #    i3bar_command i3bar-icons
+	#    status_command i3status
+        tray_output none
+        position bottom
+        mode dock
+        status_command $HOME/.i3/i3-conky-initscript.sh
+        font xft:Inconsolta Bold 10
+
+
+   colors {
+	statusline	#6e7f80
+	background	#191919
+	
+  #class                 	                 border 		backgrd 	text
+        focused_workspace      #191919 		#191919 	#bf3f34
+        active_workspace          #191919 		 #191919 	#696f89
+        inactive_workspace     #191919 		#191919 	#696f89
+        urgent_workspace        #191919 		#191919 	#c7a551
+   }     
+}
+
+#######################################################################
+# automatically start i3-config-wizard to offer the user to create a
+# keysym-based config which used his favorite modifier (alt or windows)
+#
+# i3-config-wizard will not launch if there already is a config file
+# in ~/.i3/config.
+#
+# Please remove the following exec line:
+#######################################################################
+#exec i3-config-wizard
