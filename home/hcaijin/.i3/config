@@ -248,7 +248,7 @@ client.urgent			#383a3b #383a3b  #ee0000
 #bindsym $MOD+Return exec --no-startup-id urxvt -g 90x16+15+425
 #bindsym $MOD+Return exec --no-startup-id urxvt -g 90x30
 #bindsym $MOD+Return exec --no-startup-id urxvt -fg Black -bg White -rv
-bindsym $MOD+Return exec --no-startup-id urxvt -rv -e tmux
+bindsym $MOD+Return exec --no-startup-id urxvt -rv ###-e tmux
 #bindsym $MOD+SHIFT+f exec thunar
 bindsym $mod+w exec chromium
 bindsym $mod+SHIFT+w exec firefox
@@ -302,5 +302,5 @@ bar {
 # AUTOSTART
 exec --no-startup-id xpad
 exec --no-startup-id fcitx
-exec --no-startup-id sh ~/.fehbg
-exec --no-startup-id sh ~/bin/tmux-new-session.sh
+exec --no-startup-id sh ~/bin/fehbg.sh
+#exec --no-startup-id sh ~/bin/tmux-new-session.sh
