@@ -7,20 +7,20 @@ set $mod Mod4
 #set Mode_switch $MOD5
 
 #default, floating, tabbed
-#new container floating 
+#new container floating
 
 # TOGGLE FLOATING / TILING
 #bindsym $MOD+SHIFT+t floating toggle
 
 # new window default border
 #new_window 1pixel
-new_window pixel 2
+new_window pixel 1
 #new_float 1pixel
-new_float pixel 2 
+new_float pixel 1
 
 # HIDE EDGE BORDERS
 #hide_edge_borders <none|vertical|horizontal|both>
-#hide_edge_borders both 
+#hide_edge_borders both
 
 # font for window titles. ISO 10646 = Unicode
 #font fixed
@@ -49,7 +49,7 @@ bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 
 # BORDERLESS CONTAINER
-#i3-msg border none 
+#i3-msg border none
 
 # ASSIGN WORKSPACE VARIABLES
 set $WS1 »term
@@ -61,21 +61,22 @@ set $WS6 »system
 set $WS7 »office
 set $WS8 »mail
 set $WS9 »games
+set $WS0 »code
 
 # WINDOW CONTROL
-# Float 
+# Float
 ## Float everything
 #for_window [class="[.]*"] floating enable
 #for_window [class=""] floating enable
-for_window [class="xpad" instance="scratchpad"] move scratchpad
-for_window [class="MPlayer|Gnome-mplayer|Galculator|Gsimplecal|Viewnior|Alarm-clock|xpad|Java|Clamtk"] floating enable
-for_window [class="File-roller|Lxappearance|Nitrogen|Arandr|Caffeine|Pavucontrol|emulator64-arm|Transmission-gtk|sublime-text"] floating enable
-for_window [title="Preferences|Xfce-notifyd|Skype|TrueCrypt|Catfish|Google Keep|Pocket|irssi"] floating enable
-for_window [title="File Operation Progress" class="Thunar|pcmanfm"] floating enable
+#for_window [class="xpad" instance="scratchpad"] move scratchpad
+#for_window [class="MPlayer|Gnome-mplayer|Galculator|Gsimplecal|Viewnior|Alarm-clock|xpad|Java|Clamtk"] floating enable
+#for_window [class="File-roller|Lxappearance|Nitrogen|Arandr|Caffeine|Pavucontrol|emulator64-arm|Transmission-gtk|sublime-text"] floating enable
+#for_window [title="Preferences|Xfce-notifyd|Skype|TrueCrypt|Catfish|Google Keep|Pocket|irssi"] floating enable
+#for_window [title="File Operation Progress" class="Thunar|pcmanfm"] floating enable
 for_window [title="Share a link on Twitter - Mozilla Firefox" class="Firefox"] floating enable
 for_window [title="Press This - Mozilla Firefox" class="Firefox"] floating enable
 # browser pop-ups
-for_window [window_role="pop-up"] floating enable,move absolute center
+#for_window [window_role="pop-up"] floating enable,move absolute center
 #for_window [class="mousepad"] floating enable
 #for_window [class="mousepad"] floating enable
 #for_window [class="URxvt"] floating enable
@@ -84,20 +85,20 @@ for_window [window_role="pop-up"] floating enable,move absolute center
 
 
 ## Move to workspace
-assign [instance="terminator|urxvt"] $WS1
-assign [instance="Navigator|chromium|filezilla|transmission-gtk|Dialog"] $WS2
-assign [class="jetbrains-android-studio"] $WS2
-assign [class="sublime-text|pcmanfm"] $WS3
-assign [instance="mousepad|leafpad|geany"] $WS3
-assign [instance="shotwell|nitrogen|simple-scan|quodlibet|gnome-mplayer|brasero|devede|imagination|picard|wxcam|google-musicmanager|sound-juicer|goobox"] $WS4
-assign [class="MPlayer|mpv|Xfburn|Sonata|Pitivi"] $WS4
-assign [class="pcmanfm|Thunar|Gimp|Eclipse|Pinta|Blender|Catfish|Galculator"] $WS5
+assign [instance="urxvt"] $WS1
+assign [instance="Chromium|Filezilla"] $WS2
+#assign [class="jetbrains-android-studio"] $WS2
+assign [class="Emacs"] $WS3
+#assign [instance="mousepad|leafpad|geany"] $WS3
+#assign [instance="shotwell|nitrogen|simple-scan|quodlibet|gnome-mplayer|brasero|devede|imagination|picard|wxcam|google-musicmanager|sound-juicer|goobox"] $WS4
+#assign [class="MPlayer|mpv|Xfburn|Sonata|Pitivi"] $WS4
+#assign [class="pcmanfm|Thunar|Gimp|Eclipse|Pinta|Blender|Catfish|Galculator"] $WS5
 assign [class="VirtualBox"] $WS6
-assign [instance="syncbackup|bleachbit|gparted|hardinfo|truecrypt"] $WS6
-assign [instance="VCLSalFrame"] $WS7
-assign [class="libreoffice*|Zathura"] $WS7
-assign [class="Claws-mail"] $WS8
-assign [class="Wine|Steam|dontstarve"] $WS9
+#assign [instance="syncbackup|bleachbit|gparted|hardinfo|truecrypt"] $WS6
+assign [instance="libreoffice"] $WS7
+#assign [class="Claws-mail"] $WS8
+#assign [class="Wine|Steam|dontstarve"] $WS9
+assign [class="Wireshark-qt|Ettercap"] $WS0
 
 ## KEY BINDINGS
 bindsym $MOD+Tab focus right
@@ -162,7 +163,7 @@ bindsym $mod+6 workspace $WS6
 bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace $WS0
 
 # move focused container to workspace
 bindsym $mod+Shift+exclam move container to workspace $WS1
@@ -173,8 +174,8 @@ bindsym $mod+Shift+percent move container to workspace $WS5
 bindsym $mod+Shift+asciicircum move container to workspace $WS6
 bindsym $mod+Shift+ampersand move container to workspace $WS7
 bindsym $mod+Shift+asterisk move container to workspace $WS8
-bindsym $mod+Shift+parenleft move container to workspace 9
-bindsym $mod+Shift+parenright move container to workspace 10
+bindsym $mod+Shift+parenleft move container to workspace $WS9
+bindsym $mod+Shift+parenright move container to workspace $WS0
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -190,12 +191,12 @@ mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt 
-	# arrow keys #        
+        bindsym l resize grow width 10 px or 10 ppt
+	# arrow keys #
 	# bindsym 113 right
-#        bindsym 116 up 
-#        bindsym 111 left 
-#        bindsym 114 down 
+#        bindsym 116 up
+#        bindsym 111 left
+#        bindsym 114 down
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -213,26 +214,27 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $HOME/bin/i3exit suspend, mode "default"
     bindsym h exec --no-startup-id $HOME/bin/i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id $HOME/bin/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id $HOME/bin/i3exit shutdown, mode "default"  
+    bindsym Shift+s exec --no-startup-id $HOME/bin/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Insert mode "$mode_system"
 
 # take screenshot
 #bindsym Print exec scrot '%Y-%m-%d-%t_$wx$h.png' -e 'mv $ $f ~/images/'
 #bindsym Print exec scrot 'Screenshot - %Y-%m-%d--%_$wx$h_scrot.png' -e 'mv $f ~/Picture/screenshots'
-bindsym Print exec $HOME/bin/screen.sh 
+#bindsym Print exec $HOME/bin/screen.sh
 #bindsym Mod1+Print exec $HOME/bin/screen.sh active
+bindsym Print exec xfce4-screenshooter
 
 # colors
 
 # class                 border  backgr.    text
 ## LIME GREEN ACTIVE BORDER
 client.focused			#9fbc00 #9fbc00	 #111111
-## BLUE ACTIVE BORDER  
+## BLUE ACTIVE BORDER
 #client.focused			#2b6cc4 #2b6cc4	 #111111
 ## RED ACTIVE BORDER
 #client.focused			#bf3f34 #bf3f34	 #111111
@@ -248,30 +250,32 @@ client.urgent			#383a3b #383a3b  #ee0000
 #bindsym $MOD+Return exec --no-startup-id urxvt -g 90x16+15+425
 #bindsym $MOD+Return exec --no-startup-id urxvt -g 90x30
 #bindsym $MOD+Return exec --no-startup-id urxvt -fg Black -bg White -rv
-bindsym $MOD+Return exec --no-startup-id urxvt -rv ###-e tmux
+bindsym $MOD+Return exec --no-startup-id urxvt -rv
+bindsym $MOD+SHIFT+Return exec --no-startup-id urxvt -rv -e tmux
 #bindsym $MOD+SHIFT+f exec thunar
 bindsym $mod+w exec chromium
 bindsym $mod+SHIFT+w exec firefox
 #bindsym $mod+b exec $HOME/downloads/tor-browser_en-US/start-tor-browser
-bindsym $mod+e exec geany
-bindsym Mod1+l exec i3lock -i $HOME/Picture/andriod.pic/IMG_20131115_122522.JPG
-bindsym Mod1+e exec claws-mail
-bindsym $mod+o exec pcmanfm
-bindsym $mod+i exec urxvt -rv -e irssi
-bindsym $MOD+SHIFT+t exec urxvt -rv -e htop
+bindsym $mod+e exec emacs
+bindsym Mod1+l exec i3lock -i $HOME/bin/300-Arch.png
+#bindsym Mod1+e exec claws-mail
+bindsym $mod+o exec libreoffice
+bindsym $mod+v exec virtualbox
+#bindsym $mod+i exec urxvt -rv -e irssi
+bindsym $MOD+SHIFT+t exec urxvt -rv -e top
 
 
 # VOLUME ADJUSTMENT
 #bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
 #bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
-bindsym $MOD+SHIFT+Up exec "amixer -D pulse sset Master '5.0%+'"
-bindsym $MOD+SHIFT+Down exec "amixer -D pulse sset Master '5.0%-'"
+#bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+#bindsym $MOD+SHIFT+Up exec "amixer -D pulse sset Master '5.0%+'"
+#bindsym $MOD+SHIFT+Down exec "amixer -D pulse sset Master '5.0%-'"
 
-bindsym XF86AudioPlay exec "mpc toggle"
-bindsym XF86AudioStop exec "mpc stop"
-bindsym XF86AudioNext exec "mpc next"
-bindsym XF86AudioPrev exec "mpc prev"
+#bindsym XF86AudioPlay exec "mpc toggle"
+#bindsym XF86AudioStop exec "mpc stop"
+#bindsym XF86AudioNext exec "mpc next"
+#bindsym XF86AudioPrev exec "mpc prev"
 
 
 
@@ -288,19 +292,20 @@ bar {
   colors {
 	statusline	#999999
 	background	#252525
-	
+
 # class                 	border 		backgrd 	text
         focused_workspace  #292929 		#292929 	#cccccc
         active_workspace   #252525 		#252525 	#696f89
-        inactive_workspace #252525 		#252525     #6b6b6b 
+        inactive_workspace #252525 		#252525     #6b6b6b
         urgent_workspace   #252525 		#252525 	#c7a551
    }
- 
+
 }
 ## BACKGROUND OPTIONS (STARTED IN .XINITRC)
 
 # AUTOSTART
-exec --no-startup-id xpad
+#exec --no-startup-id xpad
+exec --no-startup-id xset dpms 600
 exec --no-startup-id fcitx
 exec --no-startup-id sh ~/bin/fehbg.sh
 #exec --no-startup-id sh ~/bin/tmux-new-session.sh

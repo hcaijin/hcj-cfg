@@ -5,8 +5,8 @@ update_interval 1
 
 TEXT
 [\
-{ "full_text" : ${if_mpd_playing} "♪", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 },\
-{ "full_text" : "${mpd_artist 20} - ${mpd_title 30}"${else}""${endif}, "color" : "\#268BD2", "min_width" : 300, "separator" : false, "separator_block_width" : 3 },\
+#{ "full_text" : ${if_mpd_playing} "♪", "color" : "\#EEE8D5", "separator" : false, "separator_block_width" : 3 },\
+#{ "full_text" : "${mpd_artist 20} - ${mpd_title 30}"${else}""${endif}, "color" : "\#268BD2", "min_width" : 300, "separator" : false, "separator_block_width" : 3 },\
 # Kernel:
 {"full_text":"ⓚ","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
@@ -67,19 +67,19 @@ TEXT
 {"full_text":"☂","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${execi 300 ~/bin/weather_simple "ASI|CN|31|BAOSHAN"}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
 # Mail:
-{"full_text":"✉","color":"\#888888","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<=0}${execpi 60 python ~/bin/gmail.py}","color":"\#AAF096","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<2}${execpi 60 python ~/bin/gmail.py}","color":"\#F0DC64","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}>2}${execpi 60 python ~/bin/gmail.py}","color":"\#FF9933","separator":false,"separator_block_width":6},\
-{"full_text":"${endif}${endif}${endif}"},\
+#{"full_text":"✉","color":"\#888888","separator":false,"separator_block_width":6},\
+#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<=0}${execpi 60 python ~/bin/gmail.py}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<2}${execpi 60 python ~/bin/gmail.py}","color":"\#F0DC64","separator":false,"separator_block_width":6},\
+#{"full_text":"${else}"},\
+#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}>2}${execpi 60 python ~/bin/gmail.py}","color":"\#FF9933","separator":false,"separator_block_width":6},\
+#{"full_text":"${endif}${endif}${endif}"},\
 # Battery:
-{"full_text":"ⓑ","color":"\#888888","separator":false,"separator_block_width":6},\
-{"full_text":"${battery_percent}%","color":"\#EEEEEE","separator":false},\
+#{"full_text":"ⓑ","color":"\#888888","separator":false,"separator_block_width":6},\
+#{"full_text":"${battery_percent}%","color":"\#EEEEEE","separator":false},\
 # Volume:
-{"full_text":"ⓥ","color":"\#888888","separator":false,"separator_block_width":6},\
-{"full_text":"${execi 1 amixer sget Master,0 | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#EEEEEE","separator":false},\
+#{"full_text":"ⓥ","color":"\#888888","separator":false,"separator_block_width":6},\
+#{"full_text":"${execi 1 amixer sget Master,0 | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#EEEEEE","separator":false},\
 # Date:
 {"full_text":"ⓓ","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${time %D}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\

@@ -1,0 +1,5 @@
+[user]
+	email = hcjonline@gmail.com
+	name = hcaijin
+[core]
+	excludesfile = /home/hcaijin/.gitignore

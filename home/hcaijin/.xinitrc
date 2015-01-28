@@ -19,9 +19,11 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+xrdb -merge ~/.Xresources
+
 # exec gnome-session
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
 # exec openbox-session
-exec i3 -V >> ~/.i3/i3log 2>&1
+exec i3 -V >> /var/log/i3log 2>&1

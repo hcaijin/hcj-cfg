@@ -9,7 +9,7 @@ auth_handler = urllib.request.HTTPBasicAuthHandler()
 auth_handler.add_password(realm='New mail feed',
                           uri='https://mail.google.com/',
                           user= 'hcjonline@gmail.com',
-                          passwd= 'Huang_cj909088')
+                          passwd= 'H._cj.909088')
 opener = urllib.request.build_opener(auth_handler)
 # ...and install it globally so it can be used with urlopen.
 urllib.request.install_opener(opener)

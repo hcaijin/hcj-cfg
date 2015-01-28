@@ -188,6 +188,7 @@ set shiftwidth=4                                      "换行时自动缩进4个
 set smarttab                                          "指定按一次backspace就删除shiftwidth宽度的空格
 set foldenable                                        "启用折叠
 set foldmethod=indent                                 "indent 折叠方式
+set mouse=v                                           " 在任何模式下不启用鼠标
 " set foldmethod=marker                                "marker 折叠方式
 
 " 用空格键来开关折叠
@@ -235,6 +236,7 @@ set shortmess=atI                                     "去掉欢迎界面
 " au GUIEnter * simalt ~x                              "窗口启动时自动最大化
 winpos 100 10                                         "指定窗口出现的位置，坐标原点在屏幕左上角
 set lines=38 columns=120                              "指定窗口大小，lines为高度，columns为宽度
+set pastetoggle=<F8>
 
 " 设置代码配色方案
 if g:isGUI

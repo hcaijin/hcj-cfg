@@ -1,17 +1,49 @@
 ! ######### help https://wiki.archlinux.org/index.php/rxvt-unicode
 ! ######### TERM=dump command man -Pcat urxvt | sed -n '/depth: b/,/^BA/p'|sed '$d'|sed '/^       [a-z]/s/^ */^/g'|sed -e :a -e 'N;s/\n/@@/g;ta;P;D'|sed 's,\^\([^@]\+\)@*[\t ]*\([^\^]\+\),! \2\n! URxvt*\1\n\n,g'|sed 's,@@\(  \+\),\n\1,g'|sed 's,@*$,,g'|sed '/^[^!]/d'|tr -d "'\`" >> ~/.Xresources
 ! ######### urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp' >> ~/.Xresources
-! urxvt color set
-URxvt.background:black
-URxvt.foreground:white
 ! scroll set
 URxvt.scrollBar:false
 ! URxvt.scrollBar_right:True
 ! URxvt.scrollBar_floating:True
 ! URxvt.scrollstyle:plain
 ! URxvt.scrollWithBuffer:false
-! URxvt.saveLines:5000
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt.saveLines:5000
 
 ! font set
- URxvt.font:9x15
- URxvt.letterSpace:-1
+! URxvt.font:9x15
+! URxvt.letterSpace:-1
+
+
+
+URxvt.perl-ext-common: default,matcher,fullscreen,font-size
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1
+URxvt.keysym.F11:      perl:fullscreen:switch
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+
+URxvt.colorUL: #4682B4
+
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+! Background color
+! URxvt*background: black
+! Font color
+! URxvt*foreground: white
