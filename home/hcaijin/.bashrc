@@ -13,6 +13,7 @@ blue=$(tput setaf 4)
 green=$(tput setaf 2)
 
 PS1='\[$red\]\u\[$reset\] \[$blue\]\w\[$reset\] \[$red\]\$ \[$reset\]\[$green\] '
+PATH=$PATH:$HOME/bin
 
 # 开启sudo,man的自动补全
 complete -cf sudo
