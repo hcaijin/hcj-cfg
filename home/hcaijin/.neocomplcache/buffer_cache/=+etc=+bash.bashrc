@@ -1,1 +1,0 @@
-['bash.bashrc', 'running', 'interactively', 'anything', 'return', 'case', 'TERM', 'xterm', 'rxvt', 'Eterm', 'aterm', 'kterm', 'gnome', 'PROMPT_COMMAND', 'printf', 'USER', 'HOSTNAME', 'HOME', 'screen', 'esac', 'share', 'bash-completion', 'bash_completion']

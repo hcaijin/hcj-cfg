@@ -1,1 +1,0 @@
-['bash', 'launches', 'session', 'dbus', 'instance', 'DBUS_SESSION_BUS_ADDRESS', 'type', 'dbus-launch', 'null', 'then', 'eval', '--sh-syntax', '--exit-with-session']

@@ -1,1 +1,0 @@
-['userresources', 'HOME', '.Xresources', 'usermodmap', '.Xmodmap', 'sysresources', 'xinit', 'sysmodmap', 'merge', 'defaults', 'keymaps', 'then', 'xrdb', '-merge', 'xmodmap', 'start', 'some', 'nice', 'programs', 'xinitrc.d', 'done', 'unset', 'xclock', '-geometry', 'x50-1', 'xterm', 'exec', '-name', 'login']
