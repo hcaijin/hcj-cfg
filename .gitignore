@@ -1,0 +1,14 @@
+startssl.com/
+script/
+tmp/
+log/
+*.bak
+*.tar
+*.zip
+*.vim
+*.swp
+*.rar
+*.tag
+*.tar.gz
+
+

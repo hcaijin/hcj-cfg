@@ -1,0 +1,12 @@
+Description='Shanghai baoshan home wireless connection using a static IP'
+Interface=wlp3s0
+Connection=wireless
+Security=wpa
+ESSID='TP-LINK_116DDA'
+Key='QwErTyUiOp!2#4%6&8(0'
+IP=static
+Address='172.168.1.13/24'
+Gateway='172.168.1.1'
+DNS=('172.168.1.1')
+# Uncomment this if your ssid is hidden
+#Hidden=yes

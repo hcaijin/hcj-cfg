@@ -1,0 +1,7 @@
+.coverage
+*.pyc
+*~
+*.tar.gz
+*.patch
+.tox
+tags
