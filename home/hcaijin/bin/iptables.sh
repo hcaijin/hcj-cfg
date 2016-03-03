@@ -393,6 +393,10 @@ trap 'finailize && exit 0' 2 # Ctrl-C をトラップする
 echo "In 30 seconds iptables will be automatically reset."
 echo "Don't forget to test new SSH connection!"
 echo "If there is no problem then press Ctrl-C to finish."
+<<<<<<< HEAD
+sleep 10
+=======
 sleep 30
+>>>>>>> 189b872c5f95cd23cea428d5f3a0b6f5f012d02d
 echo "rollback..."
 initialize

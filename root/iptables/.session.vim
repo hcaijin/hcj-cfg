@@ -9,7 +9,7 @@ inoremap <silent> <expr> <Plug>(neocomplcache_start_unite_quick_match) unite#sou
 inoremap <silent> <expr> <Plug>(neocomplcache_start_unite_complete) unite#sources#neocomplcache#start_complete()
 inoremap <silent> <S-Tab> =BackwardsSnippet()
 inoremap <silent> <Plug>NERDCommenterInsert  <BS>:call NERDComment('i', "insert")
-inoremap <silent> <SNR>18_AutoPairsReturn =AutoPairsReturn()
+inoremap <silent> <SNR>20_AutoPairsReturn =AutoPairsReturn()
 imap <C-F10> :call Link()
 imap <C-F9> :call Compile()
 imap <F9> :call Run()
@@ -30,11 +30,9 @@ nmap g :cs find g =expand("<cword>")
 nmap s :cs find s =expand("<cword>")
 nnoremap   @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')
 vnoremap <silent> # y?=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')
-nmap # <Plug>MarkSearchPrev
 snoremap % b<BS>%
 snoremap ' b<BS>'
 vnoremap <silent> * y/=substitute(escape(@", '.*\\/[]'), "\n", '\\n', 'g')
-nmap * <Plug>MarkSearchNext
 imap ì <Right>
 imap è <Left>
 imap ê <Down>
@@ -65,17 +63,6 @@ xmap \c  <Plug>NERDCommenterToggle
 nmap \c  <Plug>NERDCommenterToggle
 xmap \cc <Plug>NERDCommenterComment
 nmap \cc <Plug>NERDCommenterComment
-nmap \? <Plug>MarkSearchAnyPrev
-nmap \/ <Plug>MarkSearchAnyNext
-nmap \# <Plug>MarkSearchCurrentPrev
-nmap \* <Plug>MarkSearchCurrentNext
-nmap \n <Plug>MarkClear
-xmap \r <Plug>MarkRegex
-nmap \r <Plug>MarkRegex
-xmap \m <Plug>MarkSet
-nmap \m <Plug>MarkSet
-map \sc :call ConfigSymbs()  
-map \sy :call SyncSource()   
 map \rwp <Plug>RestoreWinPosn
 map \swp <Plug>SaveWinPosn
 map \tt <Plug>AM_tt
@@ -155,7 +142,7 @@ snoremap <Left> bi
 snoremap <Right> a
 snoremap <BS> b<BS>
 snoremap <silent> <S-Tab> i<Right>=BackwardsSnippet()
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cfile>"),0)
 nnoremap <silent> <Plug>SurroundRepeat .
 xnoremap <silent> <Plug>NERDCommenterUncomment :call NERDComment("x", "Uncomment")
 nnoremap <silent> <Plug>NERDCommenterUncomment :call NERDComment("n", "Uncomment")
@@ -179,27 +166,10 @@ xnoremap <silent> <Plug>NERDCommenterToggle :call NERDComment("x", "Toggle")
 nnoremap <silent> <Plug>NERDCommenterToggle :call NERDComment("n", "Toggle")
 xnoremap <silent> <Plug>NERDCommenterComment :call NERDComment("x", "Comment")
 nnoremap <silent> <Plug>NERDCommenterComment :call NERDComment("n", "Comment")
-nnoremap <silent> <Plug>MarkSearchOrAnyPrev :if !mark#SearchNext(1,'mark#SearchAnyMark')|execute 'normal! #zv'|endif
-nnoremap <silent> <Plug>MarkSearchOrAnyNext :if !mark#SearchNext(0,'mark#SearchAnyMark')|execute 'normal! *zv'|endif
-nnoremap <silent> <Plug>MarkSearchOrCurPrev :if !mark#SearchNext(1,'mark#SearchCurrentMark')|execute 'normal! #zv'|endif
-nnoremap <silent> <Plug>MarkSearchOrCurNext :if !mark#SearchNext(0,'mark#SearchCurrentMark')|execute 'normal! *zv'|endif
-nnoremap <silent> <Plug>MarkSearchPrev :if !mark#SearchNext(1)|execute 'normal! #zv'|endif
-nnoremap <silent> <Plug>MarkSearchNext :if !mark#SearchNext(0)|execute 'normal! *zv'|endif
-nnoremap <silent> <Plug>MarkSearchAnyPrev :call mark#SearchAnyMark(1)
-nnoremap <silent> <Plug>MarkSearchAnyNext :call mark#SearchAnyMark(0)
-nnoremap <silent> <Plug>MarkSearchCurrentPrev :call mark#SearchCurrentMark(1)
-nnoremap <silent> <Plug>MarkSearchCurrentNext :call mark#SearchCurrentMark(0)
-nnoremap <silent> <Plug>MarkToggle :call mark#Toggle()
-nnoremap <silent> <Plug>MarkAllClear :call mark#ClearAll()
-nnoremap <silent> <Plug>MarkClear :if !mark#DoMark(v:count, (v:count ? '' : mark#CurrentMark()[0]))|execute "normal! \<C-\>\<C-n>\<Esc>"|endif
-vnoremap <silent> <Plug>MarkRegex :call mark#MarkRegex(mark#GetVisualSelectionAsRegexp())
-nnoremap <silent> <Plug>MarkRegex :call mark#MarkRegex('')
-vnoremap <silent> <Plug>MarkSet :if !mark#DoMark(v:count, mark#GetVisualSelectionAsLiteralPattern())|execute "normal! \<C-\>\<C-n>\<Esc>"|endif
-nnoremap <silent> <Plug>MarkSet :if !mark#MarkCurrentWord(v:count)|execute "normal! \<C-\>\<C-n>\<Esc>"|endif
 nmap <silent> <Plug>RestoreWinPosn :call RestoreWinPosn()
 nmap <silent> <Plug>SaveWinPosn :call SaveWinPosn()
-nmap <SNR>15_WE <Plug>AlignMapsWrapperEnd
-map <SNR>15_WS <Plug>AlignMapsWrapperStart
+nmap <SNR>17_WE <Plug>AlignMapsWrapperEnd
+map <SNR>17_WS <Plug>AlignMapsWrapperStart
 nmap <F2> :NERDTreeToggle
 map <C-F10> :call Link()
 map <C-F9> :call Compile()
@@ -221,14 +191,12 @@ set backspace=2
 set cmdheight=2
 set completefunc=neocomplcache#complete#manual_complete
 set completeopt=menuone
-set cscopeprg=/usr/bin/cscope
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 set cscopetag
 set cscopeverbose
 set expandtab
 set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1
 set fileformats=unix,dos,mac
-set guicursor=n-v-c:block,o:hor50,i-ci:hor15,r-cr:hor30,sm:block,a:blinkon0
 set helplang=cn
 set hlsearch
 set ignorecase
@@ -236,25 +204,28 @@ set laststatus=2
 set nomodeline
 set mouse=a
 set ruler
-set runtimepath=~/.vim/bundle/vundle,~/.vim/bundle/a.vim,~/.vim/bundle/Align,~/.vim/bundle/auto-pairs,~/.vim/bundle/bufexplorer.zip,~/.vim/bundle/ccvext.vim,~/.vim/bundle/cSyntaxAfter,~/.vim/bundle/indentLine,~/.vim/bundle/Mark-Karkat,~/.vim/bundle/neocomplcache,~/.vim/bundle/nerdcommenter,~/.vim/bundle/nerdtree,~/.vim/bundle/OmniCppComplete,~/.vim/bundle/vim-powerline,~/.vim/bundle/repeat.vim,~/.vim/bundle/snipmate.vim,~/.vim/bundle/SrcExpl,~/.vim/bundle/std_c.zip,~/.vim/bundle/vim-surround,~/.vim/bundle/syntastic,~/.vim/bundle/tagbar,~/.vim/bundle/taglist,~/.vim/bundle/TxtBrowser,~/.vim/bundle/ZoomWin,~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/vundle/,~/.vim/bundle/vundle/after,~/.vim/bundle/a.vim/after,~/.vim/bundle/Align/after,~/.vim/bundle/auto-pairs/after,~/.vim/bundle/bufexplorer.zip/after,~/.vim/bundle/ccvext.vim/after,~/.vim/bundle/cSyntaxAfter/after,~/.vim/bundle/indentLine/after,~/.vim/bundle/Mark-Karkat/after,~/.vim/bundle/neocomplcache/after,~/.vim/bundle/nerdcommenter/after,~/.vim/bundle/nerdtree/after,~/.vim/bundle/OmniCppComplete/after,~/.vim/bundle/vim-powerline/after,~/.vim/bundle/repeat.vim/after,~/.vim/bundle/snipmate.vim/after,~/.vim/bundle/SrcExpl/after,~/.vim/bundle/std_c.zip/after,~/.vim/bundle/vim-surround/after,~/.vim/bundle/syntastic/after,~/.vim/bundle/tagbar/after,~/.vim/bundle/taglist/after,~/.vim/bundle/TxtBrowser/after,~/.vim/bundle/ZoomWin/after
+set runtimepath=~/.vim,~/.vim/bundle/vundle,~/.vim/bundle/a.vim,~/.vim/bundle/Align,~/.vim/bundle/auto-pairs,~/.vim/bundle/bufexplorer.zip,~/.vim/bundle/ccvext.vim,~/.vim/bundle/cSyntaxAfter,~/.vim/bundle/indentLine,~/.vim/bundle/Mark-Karkat,~/.vim/bundle/neocomplcache,~/.vim/bundle/nerdcommenter,~/.vim/bundle/nerdtree,~/.vim/bundle/OmniCppComplete,~/.vim/bundle/vim-powerline,~/.vim/bundle/repeat.vim,~/.vim/bundle/snipmate.vim,~/.vim/bundle/SrcExpl,~/.vim/bundle/std_c.zip,~/.vim/bundle/vim-surround,~/.vim/bundle/syntastic,~/.vim/bundle/tagbar,~/.vim/bundle/taglist,~/.vim/bundle/TxtBrowser,~/.vim/bundle/ZoomWin,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/vundle/,~/.vim/bundle/vundle/after,~/.vim/bundle/a.vim/after,~/.vim/bundle/Align/after,~/.vim/bundle/auto-pairs/after,~/.vim/bundle/bufexplorer.zip/after,~/.vim/bundle/ccvext.vim/after,~/.vim/bundle/cSyntaxAfter/after,~/.vim/bundle/indentLine/after,~/.vim/bundle/Mark-Karkat/after,~/.vim/bundle/neocomplcache/after,~/.vim/bundle/nerdcommenter/after,~/.vim/bundle/nerdtree/after,~/.vim/bundle/OmniCppComplete/after,~/.vim/bundle/vim-powerline/after,~/.vim/bundle/repeat.vim/after,~/.vim/bundle/snipmate.vim/after,~/.vim/bundle/SrcExpl/after,~/.vim/bundle/std_c.zip/after,~/.vim/bundle/vim-surround/after,~/.vim/bundle/syntastic/after,~/.vim/bundle/tagbar/after,~/.vim/bundle/taglist/after,~/.vim/bundle/TxtBrowser/after,~/.vim/bundle/ZoomWin/after
 set shiftwidth=4
 set shortmess=atI
 set smartcase
 set smartindent
 set smarttab
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tabstop=4
 set tags=./tags;
 set visualbell
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/script/iptables
+cd ~/hcj-cfg/root/iptables
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
 badd +0 iptables.rule
-args iptables.rule
+argglobal
+silent! argdel *
+argadd iptables.rule
 edit iptables.rule
 set splitbelow splitright
 set nosplitbelow
@@ -269,7 +240,8 @@ inoremap <buffer> <silent> î :call AutoPairsJump()a
 inoremap <buffer> <silent> <expr> ð AutoPairsToggle()
 inoremap <buffer> <silent> â =AutoPairsBackInsert()
 inoremap <buffer> <silent> å =AutoPairsFastWrap()
-inoremap <buffer> <silent>   =AutoPairsSpace()
+inoremap <buffer> <silent>  =AutoPairsDelete()
+inoremap <buffer> <silent>   =AutoPairsSpace()
 inoremap <buffer> <silent> " =AutoPairsInsert('"')
 inoremap <buffer> <silent> ' =AutoPairsInsert('''')
 inoremap <buffer> <silent> ( =AutoPairsInsert('(')
@@ -287,6 +259,8 @@ setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
 setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
 setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
@@ -298,10 +272,8 @@ setlocal colorcolumn=
 setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
 setlocal commentstring=#%s
 setlocal complete=.,w,b,u,t,i
-set concealcursor=inc
 setlocal concealcursor=inc
-set conceallevel=1
-setlocal conceallevel=1
+setlocal conceallevel=2
 setlocal completefunc=neocomplcache#complete#auto_complete
 setlocal nocopyindent
 setlocal cryptmethod=
@@ -322,7 +294,7 @@ setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=4
 setlocal foldmarker={{{,}}}
 set foldmethod=indent
 setlocal foldmethod=indent
@@ -344,6 +316,7 @@ setlocal iskeyword=@,48-57,_,192-255,.
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
+setlocal lispwords=
 setlocal nolist
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
@@ -388,12 +361,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 108 - ((45 * winheight(0) + 18) / 37)
+let s:l = 109 - ((63 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-108
-normal! 0116|
+109
+normal! 0
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

@@ -37,7 +37,11 @@ scpdo() {
 batchdo() {
     for h in $(cat $FILES|cut -f1 -d":")  
     do 
+<<<<<<< HEAD
+    ssh root@$h ${DOBASH} 
+=======
     ssh root@$h ${DOBASH}
+>>>>>>> 189b872c5f95cd23cea428d5f3a0b6f5f012d02d
     #如果命令是多行的，请参照下面  
     #ssh root@$h '此处写要执行的命令1' 
     #ssh root@$h '此处写要执行的命令2' 
@@ -50,7 +54,15 @@ ssh_copy_id() {
     do
     ip=$(echo "$p"|cut -f1 -d":")       #取ip.txt文件中的ip地址
     password=$(echo "$p"|cut -f2 -d":") #取ip.txt文件中的密码
+<<<<<<< HEAD
+    terminfo=$( ssh root@$ip 'ls .terminfo/r/rxvt-unicode-256color')
+    #判断是否有terminfo
+    if [[ ! -f "$terminfo" ]]; then
+        ssh root@$ip 'mkdir -p ~/.terminfo/r/'; scp /usr/share/terminfo/r/rxvt-unicode-256color root@$ip:~/.terminfo/r/
+    fi
+=======
 
+>>>>>>> 189b872c5f95cd23cea428d5f3a0b6f5f012d02d
     #expect自动交互开始
     expect -c "
     spawn ssh-copy-id -i /home/hcaijin/.ssh/id_rsa.pub root@$ip
@@ -120,11 +132,26 @@ if [[ $DOSCP -eq 1 ]]; then
 fi
 
 if [[ $BATCHDO -eq 1 ]]; then
+<<<<<<< HEAD
+    DOBASH='echo "==============================>>"; hostname ;ip a | grep "inet " | grep -v "127.0.0.1" | awk "{print \"#######\"\$NF\"::\"\$2}" | cut -d \/ -f1; '$1' ;echo "<<=============================";'
+=======
     DOBASH=$1
+>>>>>>> 189b872c5f95cd23cea428d5f3a0b6f5f012d02d
     batchdo
     exit 1
 fi
 
+<<<<<<< HEAD
+if [[ $SSHCOPYID -eq 1 ]]; then
+    ssh_copy_id
+    exit 1
+fi
+
+if [[ $LIST_IP -eq 1 ]]; then
+    list_ip
+    exit 1
+fi
+=======
 if [[ $LIST_IP -eq 1 ]]; then
     list_ip
     exit 1
@@ -135,3 +162,4 @@ if [[ $SSHCOPYID -eq 1 ]]; then
     exit 1
 fi
 
+>>>>>>> 189b872c5f95cd23cea428d5f3a0b6f5f012d02d

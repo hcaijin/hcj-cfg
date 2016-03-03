@@ -22,6 +22,14 @@ complete -cf man
 # alias 配置
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
+# all proxy
+# http_proxy=127.0.0.1:1080
+# export http_proxy
+# https_proxy=127.0.0.1:1080
+# export https_proxy
+# ftp_proxy=127.0.0.1:1080
+# export ftp_proxy
+
 ########### export HISTSIZE ####################
 # 设置保存历史命令的文件大小
 export HISTFILESIZE=1000000000
@@ -38,10 +46,16 @@ export HISTCONTROL=erasedups
 export HISTIGNORE="pwd:ls:ll:la:"
 #export HISTCONTROL=ignorespace
 
-
 shopt -s autocd
 shopt -s checkwinsize
 
+make() {
+   [ "$1" == 'install' ] &&
+     echo -e "WARNING:\nDON'T INSTALL SOFTWARE MANUALY\nDON'T USE unset make TO OVERRIDE" &&
+     echo "Tip: It's easy to make own custom package see: man PKGBUILD makepkg" &&
+     return 1;
+   /usr/bin/make $@;
+ }
 
 cl() {
     local dir="$1"
@@ -98,7 +112,7 @@ todo() {
 }
 
 ipif() { 
-    if grep -P "(([1-9]\d{0,2})\.){3}(?2)" <<< "$1"
+    if grep -P "(([0-9]\d{0,2})\.){3}(?2)" <<< "$1"
     then
         curl ipinfo.io/"$1"
     else
@@ -137,3 +151,34 @@ pacman-size()
     echo "$RESULT" | awk '{TOTAL=$1+TOTAL} END {printf("Total : %d KiB\n",TOTAL)}'
 }
 
+function aa_mod_parameters () 
+{ 
+    N=/dev/null;
+    C=`tput op` O=$(echo -en "\n`tput setaf 2`>>> `tput op`");
+    for mod in $(cat /proc/modules|cut -d" " -f1);
+    do
+        md=/sys/module/$mod/parameters;
+        [[ ! -d $md ]] && continue;
+        m=$mod;
+        d=`modinfo -d $m 2>$N | tr "\n" "\t"`;
+        echo -en "$O$m$C";
+        [[ ${#d} -gt 0 ]] && echo -n " - $d";
+        echo;
+        for mc in $(cd $md; echo *);
+        do
+            de=`modinfo -p $mod 2>$N | grep ^$mc 2>$N|sed "s/^$mc=//" 2>$N`;
+            echo -en "\t$mc=`cat $md/$mc 2>$N`";
+            [[ ${#de} -gt 1 ]] && echo -en " - $de";
+            echo;
+        done;
+    done
+}
+function randpw32(){ < /dev/urandom tr -dc '!@#$%^&*'_A-Z-a-z-0-9 | head -c${1:-32};echo; }
+function randpw16(){ < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo; }
+
+function randhcj(){
+    var=`echo $1 | sha512sum | awk '{print $1}'`
+    hcj="#${var:66:6}$${var:77:7}J"
+    echo ${hcj}
+    echo
+}

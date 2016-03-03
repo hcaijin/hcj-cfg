@@ -1,4 +1,12 @@
 #!/bin/bash
+<<<<<<< HEAD
+DOMCUMENT='document'
+TARGET='target'
+PICTRUE='pictrue'
+
+
+=======
+>>>>>>> 189b872c5f95cd23cea428d5f3a0b6f5f012d02d
 if [[ -z "$1" ]] || [[ ! -d "$1" ]]; then
     echo "The directory is empty or not exist!"
     echo "It will use the current directory."
@@ -62,4 +70,38 @@ function checkFile(){
     done
 }
 
+<<<<<<< HEAD
+# 完成
+function moveFile(){
+    cd $nowdir
+    for fileType in ` \ls -l | grep "^-" | awk -F . '{print $NF}' | sort -n | uniq`
+    do
+        case "$fileType" in
+            doc|docx|xls|xlsx|html|pdf|txt)
+                if [ ! -d $DOMCUMENT ]; then
+                    mkdir $DOMCUMENT
+                fi
+                #mv *.doc *.docx *.xls *.xlsx *.html *.pdf *.txt $DOMCUMENT;;
+                mv "*."{$fileType} $DOMCUMENT;;
+            gz|rar|tgz|zip|iso)
+                if [ ! -d $TARGET ]; then
+                    mkdir $TARGET
+                fi
+                #mv *.gz *.rar *.tgz *.zip *.iso $TARGET;;
+                mv "*."{$fileType} $TARGET;;
+            png|jpg)
+                if [ ! -d $PICTRUE ]; then
+                    mkdir $PICTRUE
+                fi
+                #mv *.png *.jpg $PICTRUE;;
+                mv "*."{$fileType} $PICTRUE;;
+            *)
+                echo $fileType;;
+        esac
+    done
+}
+
+moveFile $1
+=======
 checkFile $1
+>>>>>>> 189b872c5f95cd23cea428d5f3a0b6f5f012d02d

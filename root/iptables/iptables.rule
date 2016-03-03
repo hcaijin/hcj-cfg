@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # 请先输入您的相关参数，不要输入错误了！
-  EXTIF="enp0s3"              # 这个是可以连上 Public IP 的网络接口
-  INIF=""               # 内部 LAN 的连接接口；若无请填 ""
-  INNET="192.168.0.0/24"    # 内部 LAN 的网域，若没有内部 LAN 请设定为 ""
+  EXTIF="enp9s0"              # 这个是可以连上 Public IP 的网络接口
+  INIF="wlp3s0"               # 内部 LAN 的连接接口；若无请填 ""
+  INNET="192.168.12.0/24"    # 内部 LAN 的网域，若没有内部 LAN 请设定为 ""
   export EXTIF INIF INNET
 
 # 第一部份，针对本机的防火墙设定！###########################

@@ -153,6 +153,11 @@ Bundle 'netroby/taglist'
 Bundle 'TxtBrowser'
 " Bundle 'winmanager'
 Bundle 'ZoomWin'
+Bundle 'Conque-Shell'
+Bundle 'javacomplete'
+Bundle 'maven-plugin'
+Bundle 'maven2'
+Bundle 'spring.vim'
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -234,7 +239,7 @@ set cursorline                                        "突出显示当前行
 set wrap                                              "设置自动换行
 set shortmess=atI                                     "去掉欢迎界面
 " au GUIEnter * simalt ~x                              "窗口启动时自动最大化
-winpos 100 10                                         "指定窗口出现的位置，坐标原点在屏幕左上角
+winpos 630 50                                         "指定窗口出现的位置，坐标原点在屏幕左上角
 set lines=38 columns=120                              "指定窗口大小，lines为高度，columns为宽度
 set pastetoggle=<F8>
 

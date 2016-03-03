@@ -26,4 +26,5 @@ xrdb -merge ~/.Xresources
 # exec startxfce4
 # ...or the Window Manager of your choice
 # exec openbox-session
-exec i3 -V >> /var/log/i3log 2>&1
+# exec i3 -V >> /var/log/i3log-$(date +'%F-%k-%M-%S') 2>&1
+exec i3
